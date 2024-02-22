@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.idea
+react-ts-lessons.iml
+package-lock.json
+yarn.lock
