@@ -1,7 +1,6 @@
 import {FC} from "react";
 import {IUser} from "../../interfaces";
-import {useLocation, useNavigate} from "react-router-dom";
-import {useAppLocation} from "../../hooks";
+import {useNavigate} from "react-router-dom";
 
 interface IProps {
     user: IUser
