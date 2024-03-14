@@ -11,6 +11,7 @@ const CarForm = () => {
     const dispatch = useAppDispatch();
 
 
+
     useEffect(() => {
         if (carForUpdate) {
             setValue('brand', carForUpdate.brand)
@@ -24,11 +25,28 @@ const CarForm = () => {
         reset()
     }
 
-    const update: SubmitHandler<ICar> = (car) => {
-        dispatch(carActions.updateById({car}));
-        dispatch(carActions.setCarForUpdate(null));
-        reset()
+
+    // const update: SubmitHandler<ICar> = (car) => {
+    //     dispatch(carActions.updateById({car.id,}));
+    //     dispatch(carActions.setCarForUpdate(null));
+    //     reset()
+    // }
+
+    const update: SubmitHandler<ICar> = (carForUpd)=> {
+        const carForUpdId = carForUpdate.id
+        if (carForUpd) {
+            const {brand, price, year} = carForUpd;
+            const updatedCar: ICar = {
+                brand: brand,
+                price: price,
+                year: year
+            };
+            dispatch(carActions.updateById({carId: carForUpdId, car: updatedCar}));
+            dispatch(carActions.setCarForUpdate(null));
+            reset();
+        }
     }
+
 
     return (
         <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
